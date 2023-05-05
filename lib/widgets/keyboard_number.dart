@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_mobile_auth/constants/color_constants.dart';
 
 class NumPad extends StatelessWidget {
   final double buttonSize;
@@ -106,18 +107,12 @@ class NumPad extends StatelessWidget {
               // в современных приложениях это выполняется автоматически)
               IconButton(
                 onPressed: null,
-                // () => onSubmit(),
                 icon: const Icon(
                   Icons.done_rounded,
                   color: Color.fromARGB(255, 255, 255, 255),
                 ),
-
                 iconSize: buttonSize,
               ),
-              // SizedBox(
-              //   height: 80,
-              //   width: 80,
-              // ),
               NumberButton(
                 number: 0,
                 size: buttonSize,
@@ -131,9 +126,9 @@ class NumPad extends StatelessWidget {
                 height: 85,
                 child: IconButton(
                   onPressed: () => delete(),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.backspace_outlined,
-                    color: Color.fromRGBO(123, 97, 255, 1),
+                    color: taskColor,
                   ),
                   // iconSize: buttonSize,
                 ),

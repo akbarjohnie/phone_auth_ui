@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:simple_mobile_auth/constants/color_constants.dart';
 import 'package:simple_mobile_auth/widgets/keyboard_number.dart';
 
 class ConfirmationScreen extends StatefulWidget {
@@ -22,40 +23,25 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   elevation: 0,
-      //   backgroundColor: Colors.white,
-      //   leading:
-      //   IconButton(
-      //     icon: const Icon(
-      //       Icons.arrow_back_ios,
-      //       color: Color.fromARGB(255, 0, 0, 0),
-      //     ),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Color.fromARGB(255, 0, 0, 0),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           const SizedBox(
-            height: 25,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+            height: 20,
           ),
           const Text(
             'Введите код',
@@ -74,12 +60,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
             textAlign: TextAlign.center,
             style: const TextStyle(
               fontSize: 12,
-              color: Color.fromRGBO(
-                123,
-                97,
-                255,
-                1,
-              ),
+              color: taskColor,
             ),
           ),
           const SizedBox(
@@ -93,24 +74,25 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               enabled: false,
               controller: _textController,
               defaultPinTheme: PinTheme(
-                width: 50,
-                height: 50,
+                width: 66,
+                height: 65,
                 decoration: BoxDecoration(
+                  color: Colors.white,
                   boxShadow: [
                     BoxShadow(
                       offset: const Offset(0, 1),
-                      blurRadius: 1,
+                      blurRadius: 5,
                       color: Colors.grey.withOpacity(0.3),
                     ),
                   ],
                   border: Border.all(
                     color: const Color.fromARGB(255, 255, 255, 255),
                   ),
-                  borderRadius: BorderRadius.circular(5),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 textStyle: const TextStyle(
                   fontSize: 32,
-                  color: Color.fromRGBO(123, 97, 255, 1),
+                  color: taskColor,
                 ),
               ),
             ),
@@ -126,52 +108,14 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               right: 12,
             ),
             child: SizedBox(
-              // decoration: const BoxDecoration(
-              //   gradient: LinearGradient(
-              //     begin: Alignment.centerLeft,
-              //     end: Alignment.centerRight,
-              //     colors: [
-              //       Color(0x007C62FF),
-              //       Color(0x00BA62FF),
-              //     ],
-              //   ),
-              // ),
               width: double.infinity,
               height: 51,
               child: Ink(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  gradient: const LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [
-                      Color.fromRGBO(124, 98, 255, 1),
-                      Color.fromRGBO(186, 98, 255, 1)
-                      // Color.fromRGBO(124, 98, 255, 0),
-                      // Color.fromRGBO(186, 98, 255, 0),
-                    ],
-                    // stops: [
-                    //   0.1,
-                    //   0.4,
-                    //   0.6,
-                    //   0.9,
-                    // ],
-                  ),
+                  gradient: gradientColor,
                 ),
-                // child:
-                // Container(
-                //   constraints: const BoxConstraints(
-                //     minWidth: 88.0,
-                //     minHeight: 36.0,
-                //   ), // min sizes for Material buttons
-                //   alignment: Alignment.center,
                 child: MaterialButton(
-                  // style: ElevatedButton.styleFrom(
-                  //   // backgroundColor: Color,
-                  //   shape: RoundedRectangleBorder(
-                  //     borderRadius: BorderRadius.circular(15),
-                  //   ),
-                  // ),
                   onPressed: () {},
                   child: const Text(
                     'Запросить ещё раз',
@@ -179,9 +123,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                     style: TextStyle(
                       color: Colors.white,
                     ),
-                    // ),
                   ),
-                  // const Text("Запросить ещё раз"),
                 ),
               ),
             ),

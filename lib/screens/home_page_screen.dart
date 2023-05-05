@@ -8,7 +8,7 @@ class HomePageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
       ),
     );
@@ -18,22 +18,15 @@ class HomePageScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Center(
-        child:
-            //     Container(
-            //   height: 44.0,
-            //   decoration: BoxDecoration(
-            //       gradient: LinearGradient(colors: [Colors.pink, Colors.green])),
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     style: ElevatedButton.styleFrom(
-            //         primary: Colors.transparent, shadowColor: Colors.transparent),
-            //     child: Text('Elevated Button'),
-            //   ),
-            // ),
-            Container(
+        child: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.pink, Colors.green],
+            borderRadius: BorderRadius.circular(15),
+            gradient: const LinearGradient(
+              colors: [
+                Colors.blue,
+                Colors.purple,
+                Colors.red,
+              ],
             ),
           ),
           child: MaterialButton(
@@ -51,7 +44,6 @@ class HomePageScreen extends StatelessWidget {
                 Radius.circular(12),
               ),
             ),
-            // color: Colors.blue,
             child: const Text(
               'With phone number',
               style: TextStyle(color: Colors.white, fontSize: 18),
