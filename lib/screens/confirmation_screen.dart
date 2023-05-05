@@ -21,6 +21,12 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
   }
 
   @override
+  void dispose() {
+    _textController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -40,9 +46,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const SizedBox(
-            height: 20,
-          ),
+          // const SizedBox(
+          //   height: 20,
+          // ),
           const Text(
             'Введите код',
             style: TextStyle(
@@ -66,68 +72,14 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
           const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-            child: Pinput(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              length: 4,
-              enabled: false,
-              controller: _textController,
-              defaultPinTheme: PinTheme(
-                width: 66,
-                height: 65,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, 1),
-                      blurRadius: 5,
-                      color: Colors.grey.withOpacity(0.3),
-                    ),
-                  ],
-                  border: Border.all(
-                    color: const Color.fromARGB(255, 255, 255, 255),
-                  ),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                textStyle: const TextStyle(
-                  fontSize: 32,
-                  color: taskColor,
-                ),
-              ),
-            ),
-          ),
+          // Поле с 4 ячейками для ввода кода подтверждения
+          _CodeField(textController: _textController),
           const SizedBox(
             height: 50,
           ),
-          Padding(
-            padding: const EdgeInsets.only(
-              top: 18.0,
-              bottom: 0,
-              left: 12,
-              right: 12,
-            ),
-            child: SizedBox(
-              width: double.infinity,
-              height: 51,
-              child: Ink(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  gradient: gradientColor,
-                ),
-                child: MaterialButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Запросить ещё раз',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Кнопка "Запросить ещё раз" в градиентной раскраске
+          const _GradientButton(),
+          // "кастомная" клавиатура
           NumPad(
             delete: () {
               if (_textController.length > 4) {
@@ -141,6 +93,88 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
             controller: _textController,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _CodeField extends StatelessWidget {
+  const _CodeField({
+    super.key,
+    required TextEditingController textController,
+  }) : _textController = textController;
+
+  final TextEditingController _textController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
+      child: Pinput(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        length: 4,
+        enabled: false,
+        controller: _textController,
+        defaultPinTheme: PinTheme(
+          width: 66,
+          height: 65,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                offset: const Offset(0, 1),
+                blurRadius: 5,
+                color: Colors.grey.withOpacity(0.3),
+              ),
+            ],
+            border: Border.all(
+              color: const Color.fromARGB(255, 255, 255, 255),
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          textStyle: const TextStyle(
+            fontSize: 32,
+            color: taskColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _GradientButton extends StatelessWidget {
+  const _GradientButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        top: 18.0,
+        bottom: 0,
+        left: 12,
+        right: 12,
+      ),
+      child: SizedBox(
+        width: double.infinity,
+        height: 51,
+        child: Ink(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            gradient: gradientColor,
+          ),
+          child: MaterialButton(
+            onPressed: () {},
+            child: const Text(
+              'Запросить ещё раз',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
