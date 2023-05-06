@@ -25,7 +25,6 @@ class NumPad extends StatelessWidget {
       margin: const EdgeInsets.only(left: 30, right: 30),
       child: Column(
         children: [
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             // кнопки для цифр от 1 до 9
@@ -50,7 +49,6 @@ class NumPad extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -74,7 +72,6 @@ class NumPad extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -98,20 +95,20 @@ class NumPad extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
           // кнопка "готово" (деактивированная), "0" и "стереть"
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // кнопка завершения (по сути не нужна,
               // в современных приложениях это выполняется автоматически)
-              IconButton(
-                onPressed: null,
-                icon: const Icon(
-                  Icons.done_rounded,
-                  color: Color.fromARGB(255, 255, 255, 255),
+              const SizedBox(
+                child: IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.done_rounded,
+                    color: Color.fromARGB(255, 255, 255, 255),
+                  ),
                 ),
-                iconSize: buttonSize,
               ),
               NumberButton(
                 number: 0,
@@ -120,17 +117,13 @@ class NumPad extends StatelessWidget {
                 controller: controller,
               ),
               // кнопка для удаления последней цифры
-              // сейчас здесь небольшой костыль
               SizedBox(
-                width: 85,
-                height: 85,
                 child: IconButton(
                   onPressed: () => delete(),
                   icon: const Icon(
                     Icons.backspace_outlined,
                     color: taskColor,
                   ),
-                  // iconSize: buttonSize,
                 ),
               ),
             ],

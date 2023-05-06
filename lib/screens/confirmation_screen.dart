@@ -29,26 +29,27 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Color.fromARGB(255, 0, 0, 0),
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(45),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Color.fromARGB(255, 0, 0, 0),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
-          onPressed: () {
-            Navigator.pop(context);
-          },
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          // const SizedBox(
-          //   height: 20,
-          // ),
           const Text(
             'Введите код',
             style: TextStyle(
@@ -56,9 +57,6 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               fontSize: 32,
               fontWeight: FontWeight.bold,
             ),
-          ),
-          const SizedBox(
-            height: 20,
           ),
           Text(
             'На ваш телефон ${widget.number} поступит звонок.\n'
@@ -68,9 +66,6 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
               fontSize: 12,
               color: taskColor,
             ),
-          ),
-          const SizedBox(
-            height: 20,
           ),
           // Поле с 4 ячейками для ввода кода подтверждения
           _CodeField(textController: _textController),

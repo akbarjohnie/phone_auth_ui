@@ -15,5 +15,5 @@
 6. Кнопка "Запросить ещё раз"
 
 ### Всё, что стоит посмотреть это 
-1. screens/confirmation_screen
-2. widgets/keyboard_number
+1. lib/screens/confirmation_screen
+2. lib/widgets/keyboard_number
