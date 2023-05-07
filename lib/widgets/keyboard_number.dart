@@ -29,19 +29,19 @@ class NumPad extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             // кнопки для цифр от 1 до 9
             children: [
-              NumberButton(
+              _NumberButton(
                 number: 1,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 2,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 3,
                 size: buttonSize,
                 color: buttonColor,
@@ -52,19 +52,19 @@ class NumPad extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberButton(
+              _NumberButton(
                 number: 4,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 5,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 6,
                 size: buttonSize,
                 color: buttonColor,
@@ -75,19 +75,19 @@ class NumPad extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              NumberButton(
+              _NumberButton(
                 number: 7,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 8,
                 size: buttonSize,
                 color: buttonColor,
                 controller: controller,
               ),
-              NumberButton(
+              _NumberButton(
                 number: 9,
                 size: buttonSize,
                 color: buttonColor,
@@ -110,7 +110,7 @@ class NumPad extends StatelessWidget {
                   ),
                 ),
               ),
-              NumberButton(
+              _NumberButton(
                 number: 0,
                 size: buttonSize,
                 color: buttonColor,
@@ -134,13 +134,13 @@ class NumPad extends StatelessWidget {
   }
 }
 
-class NumberButton extends StatelessWidget {
+class _NumberButton extends StatelessWidget {
   final int number;
   final double size;
   final Color color;
   final TextEditingController controller;
 
-  const NumberButton({
+  const _NumberButton({
     Key? key,
     required this.number,
     required this.size,

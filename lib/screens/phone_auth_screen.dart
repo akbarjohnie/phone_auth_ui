@@ -9,16 +9,18 @@ class PhoneAuthScreen extends StatefulWidget {
 }
 
 class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
-  late final textController = TextEditingController();
+  late final _textController = TextEditingController();
+
   @override
   void initState() {
-    textController.text = '+7 ';
+    // чтобы не приходилось всё время вводить номер для перехода на следующий экран
+    _textController.text = '+7 (123) 111-22-33';
     super.initState();
   }
 
   @override
   void dispose() {
-    textController.dispose();
+    _textController.dispose();
     super.dispose();
   }
 
@@ -26,7 +28,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('123'),
+        title: const Text('Введите номер'),
         centerTitle: true,
       ),
       body: Column(
@@ -36,7 +38,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
             padding: const EdgeInsets.all(12.0),
             child: TextField(
               onEditingComplete: () {},
-              controller: textController,
+              controller: _textController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
@@ -52,12 +54,12 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
               ),
             ),
             onPressed: () {
-              if (textController.text.split(' ').join().length >= 11) {
+              if (_textController.text.split(' ').join().length >= 11) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) =>
-                        ConfirmationScreen(number: textController.text),
+                        ConfirmationScreen(number: _textController.text),
                   ),
                 );
               }
