@@ -9,3 +9,6 @@ const gradientColor = LinearGradient(
 
 // Цвет текста с указаниями, последних цифр и кнопки "стереть"
 const taskColor = Color.fromRGBO(123, 97, 255, 1);
+
+// Цвет фона
+const backColor = Color.fromRGBO(253, 253, 253, 1);

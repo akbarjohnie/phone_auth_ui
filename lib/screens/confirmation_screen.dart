@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:pinput/pinput.dart';
 import 'package:simple_mobile_auth/constants/color_constants.dart';
 import 'package:simple_mobile_auth/widgets/keyboard_number.dart';
@@ -28,12 +29,17 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle.dark.copyWith(
+        statusBarColor: Colors.transparent,
+      ),
+    );
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: backColor,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(45),
         child: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: backColor,
           elevation: 0,
           automaticallyImplyLeading: false,
           leading: IconButton(
@@ -55,7 +61,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
             style: TextStyle(
               color: Colors.black,
               fontSize: 32,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w700,
             ),
           ),
           Text(
@@ -65,6 +71,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
             style: const TextStyle(
               fontSize: 12,
               color: taskColor,
+              fontWeight: FontWeight.w400,
             ),
           ),
           // Поле с 4 ячейками для ввода кода подтверждения
@@ -95,7 +102,6 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
 
 class _CodeField extends StatelessWidget {
   const _CodeField({
-    super.key,
     required TextEditingController textController,
   }) : _textController = textController;
 
@@ -106,7 +112,7 @@ class _CodeField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
       child: Pinput(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         length: 4,
         enabled: false,
         controller: _textController,
@@ -115,21 +121,22 @@ class _CodeField extends StatelessWidget {
           height: 65,
           decoration: BoxDecoration(
             color: Colors.white,
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
-                offset: const Offset(0, 1),
+                offset: Offset(0, 2),
                 blurRadius: 5,
-                color: Colors.grey.withOpacity(0.3),
+                color: Color.fromRGBO(123, 97, 255, 0.1),
               ),
             ],
             border: Border.all(
-              color: const Color.fromARGB(255, 255, 255, 255),
+              color: Colors.white,
             ),
             borderRadius: BorderRadius.circular(10),
           ),
           textStyle: const TextStyle(
             fontSize: 32,
             color: taskColor,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),
@@ -138,25 +145,23 @@ class _CodeField extends StatelessWidget {
 }
 
 class _GradientButton extends StatelessWidget {
-  const _GradientButton({
-    super.key,
-  });
+  const _GradientButton();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 18.0,
+        top: 0,
         bottom: 0,
-        left: 12,
-        right: 12,
+        left: 16,
+        right: 16,
       ),
       child: SizedBox(
         width: double.infinity,
         height: 51,
         child: Ink(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+            borderRadius: BorderRadius.circular(20),
             gradient: gradientColor,
           ),
           child: MaterialButton(
@@ -166,6 +171,7 @@ class _GradientButton extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.white,
+                fontSize: 16,
               ),
             ),
           ),

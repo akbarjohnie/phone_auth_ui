@@ -37,7 +37,8 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: TextField(
-              onEditingComplete: () {},
+              onTapOutside: (e) =>
+                  FocusManager.instance.primaryFocus?.unfocus(),
               controller: _textController,
               keyboardType: TextInputType.phone,
               decoration: InputDecoration(

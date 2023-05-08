@@ -106,7 +106,7 @@ class NumPad extends StatelessWidget {
                   onPressed: null,
                   icon: Icon(
                     Icons.done_rounded,
-                    color: Color.fromARGB(255, 255, 255, 255),
+                    color: Colors.transparent,
                   ),
                 ),
               ),
@@ -123,6 +123,8 @@ class NumPad extends StatelessWidget {
                   icon: const Icon(
                     Icons.backspace_outlined,
                     color: taskColor,
+                    weight: 590,
+                    size: 20,
                   ),
                 ),
               ),
@@ -167,7 +169,7 @@ class _NumberButton extends StatelessWidget {
             number.toString(),
             style: const TextStyle(
               fontWeight: FontWeight.w500,
-              color: Colors.black,
+              color: Color.fromRGBO(39, 39, 39, 1),
               fontSize: 32,
             ),
           ),
