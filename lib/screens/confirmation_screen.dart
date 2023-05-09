@@ -29,16 +29,16 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle.dark.copyWith(
-        statusBarColor: Colors.transparent,
-      ),
-    );
     return Scaffold(
       backgroundColor: backColor,
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(45),
         child: AppBar(
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.transparent,
+            statusBarIconBrightness: Brightness.dark,
+            statusBarBrightness: Brightness.light,
+          ),
           backgroundColor: backColor,
           elevation: 0,
           automaticallyImplyLeading: false,
